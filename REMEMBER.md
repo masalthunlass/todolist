@@ -20,3 +20,18 @@
 * npm run build then press go live to see the result in a browser at http://127.0.0.1:5500/
 
 # creating a component
+
+## from a function
+* create a tsx file named App.tsx
+* write a function App returning a block of html tags (the return type is React.FC)
+* export it
+* use it in the render() function in index.tsx or anywhere else as a tag <App>
+
+## from a class
+* create a tsx file named Item.tsx
+* write a class Item extending  React.Component
+* make its render function returning a block of html tags 
+* export it
+* use it in the render() function in index.tsx or anywhere else as a tag <Item>
+
+components made from classes have lifecycle, those made from functions haven't.
