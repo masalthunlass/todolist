@@ -1,5 +1,6 @@
 import React from 'react';
 import Item from './Item';
+import DisplayItem from './DisplayItem';
 
 
 /*const App : React.FC = () => (
@@ -15,6 +16,7 @@ export default class App extends React.Component<{}, { itemValue: string }> {
         super(props);
         this.state = { itemValue: '' };
         this.onSubmit = this.onSubmit.bind(this);
+        this.onChangeItem = this.onChangeItem.bind(this);
     }
 
     onSubmit(event) {
@@ -22,16 +24,22 @@ export default class App extends React.Component<{}, { itemValue: string }> {
         event.preventDefault();
     }
 
-    render() {
-        return (<form onSubmit={this.onSubmit}>
-            <Item itemValue={this.state.itemValue}></Item>
-            <button  type="submit">ok</button>
-        </form>)
+    onChangeItem(value) {
+            this.setState({ itemValue: value });
     }
 
-   /* onComponentDidUpdate() {
+    render() {
+        return (<>
+        <form onSubmit={this.onSubmit}>
+            <Item itemValue={this.state.itemValue} onChange={this.onChangeItem}></Item>
+            <button type="submit">ok</button>
+        </form>
+            <DisplayItem itemValue={this.state.itemValue} ></DisplayItem></>)
+    }
 
-    }*/
+    /* onComponentDidUpdate() {
+ 
+     }*/
 
 
 } 
