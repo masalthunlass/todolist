@@ -1,6 +1,8 @@
 import React from 'react';
 import Item from './Item';
 import DisplayItem from './DisplayItem';
+import UserManagement from './user/UserManagement';
+
 
 
 /*const App : React.FC = () => (
@@ -30,16 +32,14 @@ export default class App extends React.Component<{}, { itemValue: string }> {
 
     render() {
         return (<>
+        <UserManagement></UserManagement>
+        <br /><br />
         <form onSubmit={this.onSubmit}>
             <Item itemValue={this.state.itemValue} onChange={this.onChangeItem}></Item>
             <button type="submit">ok</button>
         </form>
             <DisplayItem itemValue={this.state.itemValue} ></DisplayItem></>)
     }
-
-    /* onComponentDidUpdate() {
- 
-     }*/
 
 
 } 
