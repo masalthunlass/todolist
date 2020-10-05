@@ -8,7 +8,7 @@ interface stateParams {
     users: UserModel[]
 }
 
-export default class UserManagement extends React.Component<{}, stateParams> {
+/*export default class UserManagement extends React.Component<{}, stateParams> {
     constructor(props) {
         super(props);
         this.state = { users: [] }
@@ -28,4 +28,23 @@ export default class UserManagement extends React.Component<{}, stateParams> {
         </div>
         );
     }
+}*/
+
+const UserManagement : React.FC = () => {
+    
+    const [users, setUsers] = React.useState([]);
+    
+    return ( <div id="user"> 
+    <UserCreation onSubmit={onCreateUserRequest(users, setUsers)}></UserCreation>
+    <UserList users={users} ></UserList>
+</div>);
 }
+
+const onCreateUserRequest = (users, setUsers) => (value) => {
+    if (value) {
+        setUsers([...users, value.user]);
+    }
+}
+
+
+export default UserManagement;
