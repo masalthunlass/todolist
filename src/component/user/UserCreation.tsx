@@ -1,8 +1,8 @@
 import React from 'react';
-import User from './userModel';
+import UserModel from './userModel';
 
 interface stateParam {
-    user: User;
+    user: UserModel;
 }
 
 
@@ -28,7 +28,7 @@ export default class UserCreation extends React.Component<props, stateParam> {
     onChange(event) {
         const fieldName: string = event.target.name;
         const fieldValue: string = event.target.value;
-        const state: stateParam = { user: Object.assign(this.state.user, { [fieldName]: fieldValue }) };
+        const state: stateParam =  { user : {...this.state.user, [fieldName]: fieldValue } } ;
         this.setState(state);
     }
 

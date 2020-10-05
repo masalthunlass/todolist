@@ -2,21 +2,21 @@
 import React from 'react';
 import UserList from './UserList';
 import UserCreation from './UserCreation';
-import User from './userModel';
+import UserModel from './userModel';
 
 interface stateParams {
-    user: User
+    users: UserModel[]
 }
 
 export default class UserManagement extends React.Component<{}, stateParams> {
     constructor(props) {
         super(props);
-        this.state = { user: { lastname: '', firstname: '', language: 'none' } }
+        this.state = { users: [] }
         this.onCreateUserRequest = this.onCreateUserRequest.bind(this);
     }
     onCreateUserRequest(value) {
         if (value) {
-            this.state = value.user;
+            this.setState({users: [...this.state.users, value.user]});
         }
         
     }
@@ -24,7 +24,7 @@ export default class UserManagement extends React.Component<{}, stateParams> {
         return (
         <div id="user"> 
             <UserCreation onSubmit={this.onCreateUserRequest}></UserCreation>
-            <UserList user={this.state.user} ></UserList>
+            <UserList users={this.state.users} ></UserList>
         </div>
         );
     }

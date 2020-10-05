@@ -1,19 +1,13 @@
 import React from 'react';
+import UserModel from './userModel';
 
-interface props {
-    lastname:string;
-    firstname:string;
-    language:string;
+
+ const UserListItem: React.FC<UserModel> = ( {lastname, firstname, language } ) => {
+    return (
+        <div><span> {lastname}</span>
+            <span>  {firstname}</span>
+            <span>  {language}</span></div>
+    );
 }
 
-export default class UserListItem extends React.Component<props, {}> {
-
-    render() {
-        return(<>
-        <div><span> {this.props.lastname}</span>
-            <span>  {this.props.firstname}</span>
-            <span>  {this.props.language}</span></div> 
-        </>);
-    }
-
-}
+export default UserListItem;
