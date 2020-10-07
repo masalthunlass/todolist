@@ -9,7 +9,7 @@ interface stateParam {
 interface props {
     onSubmit: (value: stateParam) => void;
 }
-
+/*
 export default class UserCreation extends React.Component<props, stateParam> {
     constructor(props) {
         super(props);
@@ -46,6 +46,40 @@ export default class UserCreation extends React.Component<props, stateParam> {
                 </select> </span>
             <button type="submit" value="ok"> ok </button>
         </form></>)
+    }}*/
+
+    const UserCreation : React.FC<props> = ({onSubmit}) => {
+
+        const [user, setUser] = React.useState( { user: { lastname: '', firstname: '', language: 'none' } } );
+
+       const onSubmitForm = (event) => {
+            event.preventDefault();
+             if (onSubmit) {
+                onSubmit(user);
+             }
+        }
+    
+       const  onChange = (event) => {
+            const fieldName: string = event.target.name;
+            const fieldValue: string = event.target.value;
+            setUser( {...user, [fieldName]: fieldValue  });
+        }
+
+        return (<div><form onSubmit={onSubmitForm} >
+            <span><label> Prénom </label><input type="text" name="firstname"  onChange={onChange}></input> </span>
+            <span> <label> Nom </label><input type="text" name="lastname"  onChange={onChange}></input></span>
+            <span><label> Langue </label>
+                <select onChange={onChange} name="language" >
+                    <option value="none"> ---- </option>
+                    <option value="fr"> Français </option>
+                    <option value="en"> English </option>
+                    <option value="es"> Español </option>
+                    <option value="ko"> 한국어 </option>
+                </select> </span>
+            <button type="submit" value="ok"> ok </button>
+        </form></div>);
     }
 
-}
+  
+ export default  UserCreation;
+
