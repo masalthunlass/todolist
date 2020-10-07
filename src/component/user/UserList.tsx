@@ -7,7 +7,7 @@ interface props {
 }
 
 
-const UserList: React.FC<props> = (props) => {
+const UserList: React.FC<props> = (parameters) => {
     return (<div>
         <div id="header">
             <span> Nom </span>
@@ -15,9 +15,13 @@ const UserList: React.FC<props> = (props) => {
             <span> Langue </span>
         </div>
         {
-            props.users.map((user: UserModel) => (
-                <UserListItem firstname={user.firstname} lastname={user.lastname} language={user.language} />
-            ))
+            parameters.users.map((user: UserModel, index) =>{
+                console.log('user', user);
+            return (
+                
+                <UserListItem key={index} firstname={user.firstname} lastname={user.lastname} language={user.language} />
+            );
+        })
         }
     </div>);
 }
