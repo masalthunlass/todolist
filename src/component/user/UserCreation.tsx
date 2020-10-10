@@ -50,12 +50,15 @@ export default class UserCreation extends React.Component<props, stateParam> {
 
     const UserCreation : React.FC<props> = ({onSubmit}) => {
 
+
         const [user, setUser] = React.useState(  { lastname: '', firstname: '', language: 'none' }  );
+
 
        const onSubmitForm = (event) => {
             event.preventDefault();
              if (onSubmit) {
                 onSubmit({user: user});
+
              }
         }
     
@@ -63,6 +66,7 @@ export default class UserCreation extends React.Component<props, stateParam> {
             const fieldName: string = event.target.name;
             const fieldValue: string = event.target.value;
             setUser( {...user, [fieldName]: fieldValue  } );     
+
         }
 
         return (<div><form onSubmit={onSubmitForm} >
