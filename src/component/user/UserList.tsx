@@ -16,7 +16,6 @@ const UserList: React.FC<props> = (parameters) => {
         </div>
         {
             parameters.users.map((user: UserModel, index) =>{
-                console.log('user', user);
             return (
                 
                 <UserListItem key={index} firstname={user.firstname} lastname={user.lastname} language={user.language} />
