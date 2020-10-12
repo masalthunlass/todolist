@@ -4,7 +4,7 @@ import UserList from './UserList';
 import UserCreation from './UserCreation';
 import UserModel from './userModel';
 
-interface stateParams {
+interface StateParams {
     users: UserModel[]
 }
 
@@ -12,11 +12,21 @@ interface stateParams {
 const UserManagement : React.FC = () => {
     
     const [users, setUsers] = React.useState([]);
+    const [editableUser, setEditableUser] = React.useState();
     
     return ( <div id="user"> 
-    <UserCreation onSubmit={onCreateUserRequest(users, setUsers)}></UserCreation>
-    <UserList users={users} ></UserList>
+    <UserCreation onSubmit={onCreateUserRequest(users, setUsers)} editableUser={editableUser}></UserCreation>
+    <UserList users={users} onRemove={handleRemove(users, setUsers)} onEdit={handleEdit(users, setEditableUser)} ></UserList>
 </div>);
+}
+
+const handleRemove =  (users, setUsers) => (id: number) => {
+    setUsers(users.filter((user) => user.id !== id));
+}
+
+const handleEdit =  ( users, setEditableUser) => (id:number) => {
+    const user = users.find((user)=> user.id === id);
+    setEditableUser(user);
 }
 
 const onCreateUserRequest = (users, setUsers) => (value) => {
