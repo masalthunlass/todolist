@@ -2,11 +2,7 @@
 import React from 'react';
 import UserList from './UserList';
 import UserCreation from './UserCreation';
-import UserModel from './userModel';
 
-interface StateParams {
-    users: UserModel[]
-}
 
 
 const UserManagement : React.FC = () => {
@@ -29,9 +25,17 @@ const handleEdit =  ( users, setEditableUser) => (id:number) => {
     setEditableUser(user);
 }
 
+
 const onCreateUserRequest = (users, setUsers) => (value) => {
     if (value) {
-        setUsers([...users, value.user]);
+        
+        if (users.find((user)=> user.id === value.user.id) !== undefined) {
+            const index = users.findIndex((user)=> user.id === value.user.id);
+            users.splice(index, 1, value.user); 
+            setUsers(users);
+        } else {
+            setUsers( [...users, value.user]);
+        }
     }
 }
 
