@@ -11,6 +11,15 @@ const UserManagement : React.FC = () => {
     const [users, setUsers] = React.useState<UserModel[]>([]);
     const [editableUser, setEditableUser] = React.useState();
 
+    React.useEffect(() => {
+           async function getUsers() {
+               const response = await fetch('resources/users.json');
+               const users = await response.json();
+               setUsers(users);
+           };
+           getUsers();
+    });
+
 
     
     return ( <div id="user"> 
@@ -32,7 +41,7 @@ const handleEdit =  ( users, setEditableUser) => (id:number) => {
 const onCreateUserRequest = (users: UserModel[], setUsers) => (value) => {
     if (value) {
         if (users.find((user)=> user.id === value.user.id) !== undefined) {
-            const newUsers = users.reduce((acc, user) => user.id === value.user.id ? [...acc, value.user] : [...acc, user], []);
+            const newUsers = users.map((user) => user.id === value.user.id ? value.user : user);
             setUsers(newUsers);
         } else {
             setUsers( [...users, value.user]);
