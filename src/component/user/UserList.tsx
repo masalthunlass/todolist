@@ -9,6 +9,8 @@ interface Props {
 }
 
 const UserList: React.FC<Props> = (parameters) => {
+
+
     return (<div>
         <div id="header">
             <span> Nom </span>
@@ -18,7 +20,6 @@ const UserList: React.FC<Props> = (parameters) => {
         {
             parameters.users.map((user: UserModel, index) => {
                 return (
-
                     <UserListItem key={index} {...user} onEdit={parameters.onEdit} onRemove={parameters.onRemove} />
                 );
             })

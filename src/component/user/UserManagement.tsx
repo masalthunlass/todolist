@@ -4,15 +4,14 @@ import UserList from './UserList';
 import UserCreation from './UserCreation';
 import UserModel from './userModel';
 
-interface StateParams {
-    users: UserModel[]
-}
 
 
 const UserManagement : React.FC = () => {
     
-    const [users, setUsers] = React.useState([]);
+    const [users, setUsers] = React.useState<UserModel[]>([]);
     const [editableUser, setEditableUser] = React.useState();
+
+
     
     return ( <div id="user"> 
     <UserCreation onSubmit={onCreateUserRequest(users, setUsers)} editableUser={editableUser}></UserCreation>
@@ -29,9 +28,15 @@ const handleEdit =  ( users, setEditableUser) => (id:number) => {
     setEditableUser(user);
 }
 
-const onCreateUserRequest = (users, setUsers) => (value) => {
+
+const onCreateUserRequest = (users: UserModel[], setUsers) => (value) => {
     if (value) {
-        setUsers([...users, value.user]);
+        if (users.find((user)=> user.id === value.user.id) !== undefined) {
+            const newUsers = users.reduce((acc, user) => user.id === value.user.id ? [...acc, value.user] : [...acc, user], []);
+            setUsers(newUsers);
+        } else {
+            setUsers( [...users, value.user]);
+        }
     }
 }
 
