@@ -82,3 +82,12 @@ components made from classes have lifecycle, those made from functions haven't.
 # managed component 
 * = managed by react, useing virtual dom
 
+# redux configuration
+* add store (=state storage) in index.ts all 
+    the app has the same store. several stores are allowed but uncommon
+* type the store to make explicit what will be stored
+* define actions Action = Action<string> (ex CREATE)
+* actionCreators return Action
+* reducers catch actions and return back a storer with an up-to-date store
+* connect with components 
+

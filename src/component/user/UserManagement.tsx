@@ -19,8 +19,6 @@ const UserManagement : React.FC = () => {
            };
            getUsers();
     });
-
-
     
     return ( <div id="user"> 
     <UserCreation onSubmit={onCreateUserRequest(users, setUsers)} editableUser={editableUser}></UserCreation>
