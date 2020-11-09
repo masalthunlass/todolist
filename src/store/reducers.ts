@@ -1,23 +1,23 @@
 import { Reducer } from 'redux';
-import { TodoActions } from './actions';
-import { AppState } from './store';
+import UserModel from '../component/user/userModel';
+import { TodoActions, UserActions } from './actions';
 
-//not used
-/*const userReducer: Reducer<AppState, UserActions> = (state, action) => {
+const initialState = { todos: [], users: [] };
+
+export const userReducer: Reducer<UserModel[], UserActions> = (state = initialState.users, action) => {
     switch (action.type) {
         case 'ADD_USER':
-            return { ...state, users: [...state.users, action.user] };
+            return  [...state, action.user] ;
     }
     return state;
-};*/
-const initialState = { todos: [] };
-const todoReducer: Reducer<AppState, TodoActions> = (state = initialState, action) => {
+};
+
+export const todoReducer: Reducer<string[], TodoActions> = (state = initialState.todos, action) => {
     switch (action.type) {
         case 'ADD_TO_DO':
-            return { ...state, todos: [...state.todos, action.todo] };
+            return  [...state, action.todo];
         default:
             return state;
     }
 };
 
-export default todoReducer;

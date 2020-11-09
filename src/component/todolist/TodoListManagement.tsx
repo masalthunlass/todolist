@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { connect, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import actionsCreator from '../../store/actions';
 import { AppState } from '../../store/store';
 
@@ -35,16 +35,14 @@ type Props = StateProps & DispatchProps & OwnProps;
 const TodoListManagement: React.FC<Props> = (props) => {
 
     const [todo, setTodo] = React.useState('rien');
-    const dispatch = useDispatch();
-
 
     return (<div id="todolist">
         <h3>Je dois faire :</h3>
         <input type="text" value={todo} onChange={onChange(setTodo)} ></input>
         <button onClick={() => props.addTodo(todo) } >ok</button>
         {
-            props.todos.map((todo: string) => {
-                return (<p> - {todo}</p>);
+            props.todos.map((todo: string, index: number) => {
+                return (<p key={index}> - {todo}</p>);
             })
         }
     </div>);
