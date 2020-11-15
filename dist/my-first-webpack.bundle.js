@@ -529,6 +529,18 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
 
 /***/ }),
 
+/***/ "./node_modules/redux-thunk/es/index.js":
+/*!**********************************************!*\
+  !*** ./node_modules/redux-thunk/es/index.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nfunction createThunkMiddleware(extraArgument) {\n  return function (_ref) {\n    var dispatch = _ref.dispatch,\n        getState = _ref.getState;\n    return function (next) {\n      return function (action) {\n        if (typeof action === 'function') {\n          return action(dispatch, getState, extraArgument);\n        }\n\n        return next(action);\n      };\n    };\n  };\n}\n\nvar thunk = createThunkMiddleware();\nthunk.withExtraArgument = createThunkMiddleware;\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (thunk);\n\n//# sourceURL=webpack:///./node_modules/redux-thunk/es/index.js?");
+
+/***/ }),
+
 /***/ "./node_modules/redux/es/redux.js":
 /*!****************************************!*\
   !*** ./node_modules/redux/es/redux.js ***!
@@ -655,7 +667,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ \"./node_modules/react-redux/es/index.js\");\n/* harmony import */ var _store_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store/actions */ \"./src/store/actions.ts\");\n\n\n\n\nconst mapStateToProps = state => {\n  return {\n    todos: state.todos || []\n  };\n};\n\nconst mapDispatchToProps = dispatch => {\n  return {\n    addTodo: todo => {\n      dispatch(_store_actions__WEBPACK_IMPORTED_MODULE_2__[\"default\"].addTodo(todo));\n    }\n  };\n};\n\nconst TodoListManagement = props => {\n  const [todo, setTodo] = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState('rien');\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    id: \"todolist\"\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h3\", null, \"Je dois faire :\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"input\", {\n    type: \"text\",\n    value: todo,\n    onChange: onChange(setTodo)\n  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"button\", {\n    onClick: () => props.addTodo(todo)\n  }, \"ok\"), props.todos.map((todo, index) => {\n    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"p\", {\n      key: index\n    }, \" - \", todo);\n  }));\n};\n\nconst onChange = setTodo => event => {\n  const fieldValue = event.target.value;\n  setTodo(fieldValue);\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__[\"connect\"])(mapStateToProps, mapDispatchToProps)(TodoListManagement));\n\n//# sourceURL=webpack:///./src/component/todolist/TodoListManagement.tsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ \"./node_modules/react-redux/es/index.js\");\n/* harmony import */ var _store_action_todoListActions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store/action/todoListActions */ \"./src/store/action/todoListActions.ts\");\n/* harmony import */ var _store_reducer_todoReducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../store/reducer/todoReducer */ \"./src/store/reducer/todoReducer.ts\");\n\n\n\n\n\nconst mapStateToProps = state => {\n  return {\n    todos: state.todos || []\n  };\n};\n\nconst mapDispatchToProps = dispatch => {\n  return {\n    addTodo: todo => {\n      dispatch(_store_action_todoListActions__WEBPACK_IMPORTED_MODULE_2__[\"default\"].addTodo(todo));\n    },\n    getTodoList: () => {\n      dispatch(Object(_store_reducer_todoReducer__WEBPACK_IMPORTED_MODULE_3__[\"fetchTodos\"])());\n    }\n  };\n};\n\nconst TodoListManagement = props => {\n  const [todo, setTodo] = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState('rien');\n  react__WEBPACK_IMPORTED_MODULE_0___default.a.useEffect(() => {\n    props.getTodoList();\n  }, [props]);\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    id: \"todolist\"\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h3\", null, \"Je dois faire :\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"input\", {\n    type: \"text\",\n    value: todo,\n    onChange: onChange(setTodo)\n  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"button\", {\n    onClick: () => props.addTodo(todo)\n  }, \"ok\"), props.todos.map((todo, index) => {\n    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"p\", {\n      key: index\n    }, \" - \", todo);\n  }));\n};\n\nconst onChange = setTodo => event => {\n  const fieldValue = event.target.value;\n  setTodo(fieldValue);\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__[\"connect\"])(mapStateToProps, mapDispatchToProps)(TodoListManagement));\n\n//# sourceURL=webpack:///./src/component/todolist/TodoListManagement.tsx?");
 
 /***/ }),
 
@@ -719,27 +731,39 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 
 /***/ }),
 
-/***/ "./src/store/actions.ts":
-/*!******************************!*\
-  !*** ./src/store/actions.ts ***!
-  \******************************/
+/***/ "./src/store/action/todoListActions.ts":
+/*!*********************************************!*\
+  !*** ./src/store/action/todoListActions.ts ***!
+  \*********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nconst addUser = user => ({\n  type: 'ADD_USER',\n  user\n});\n\nconst addTodo = todo => ({\n  type: 'ADD_TO_DO',\n  todo\n});\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  addTodo\n});\n\n//# sourceURL=webpack:///./src/store/actions.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\nconst addTodo = todo => ({\n  type: 'ADD_TO_DO',\n  todo\n});\n\nconst fetchTodos = () => ({\n  type: 'INIT_TO_DO_LIST',\n  todos: []\n});\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  addTodo,\n  fetchTodos\n});\n\n//# sourceURL=webpack:///./src/store/action/todoListActions.ts?");
 
 /***/ }),
 
-/***/ "./src/store/reducers.ts":
-/*!*******************************!*\
-  !*** ./src/store/reducers.ts ***!
-  \*******************************/
-/*! exports provided: userReducer, todoReducer */
+/***/ "./src/store/reducer/todoReducer.ts":
+/*!******************************************!*\
+  !*** ./src/store/reducer/todoReducer.ts ***!
+  \******************************************/
+/*! exports provided: todoReducer, fetchTodos */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"userReducer\", function() { return userReducer; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"todoReducer\", function() { return todoReducer; });\nconst initialState = {\n  todos: [],\n  users: []\n};\nconst userReducer = (state = initialState.users, action) => {\n  switch (action.type) {\n    case 'ADD_USER':\n      return [...state, action.user];\n  }\n\n  return state;\n};\nconst todoReducer = (state = initialState.todos, action) => {\n  switch (action.type) {\n    case 'ADD_TO_DO':\n      return [...state, action.todo];\n\n    default:\n      return state;\n  }\n};\n\n//# sourceURL=webpack:///./src/store/reducers.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"todoReducer\", function() { return todoReducer; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"fetchTodos\", function() { return fetchTodos; });\nconst initialState = {\n  todos: [],\n  users: []\n};\nconst todoReducer = (state = initialState.todos, action) => {\n  switch (action.type) {\n    case 'ADD_TO_DO':\n      return [...state, action.todo];\n\n    case 'INIT_TO_DO_LIST':\n      return action.todos;\n\n    default:\n      return state;\n  }\n};\nconst fetchTodos = () => async (dispatch, getState) => {\n  const response = await fetch('resources/myTodoList.json');\n  const todos = await response.json();\n  dispatch({\n    type: 'INIT_TO_DO_LIST',\n    todos: todos\n  });\n};\n\n//# sourceURL=webpack:///./src/store/reducer/todoReducer.ts?");
+
+/***/ }),
+
+/***/ "./src/store/reducer/userReducer.ts":
+/*!******************************************!*\
+  !*** ./src/store/reducer/userReducer.ts ***!
+  \******************************************/
+/*! exports provided: userReducer */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"userReducer\", function() { return userReducer; });\nconst initialState = {\n  todos: [],\n  users: []\n};\nconst userReducer = (state = initialState.users, action) => {\n  switch (action.type) {\n    case 'ADD_USER':\n      return [...state, action.user];\n\n    /* case 'REMOVE_USER':\r\n         return state.filter((user) => user.id !== action.user.id);*/\n  }\n\n  return state;\n};\n\n//# sourceURL=webpack:///./src/store/reducer/userReducer.ts?");
 
 /***/ }),
 
@@ -751,7 +775,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./reducers */ \"./src/store/reducers.ts\");\n/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux */ \"./node_modules/redux/es/redux.js\");\n\n\nconst rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_1__[\"combineReducers\"])({\n  todos: _reducers__WEBPACK_IMPORTED_MODULE_0__[\"todoReducer\"],\n  users: _reducers__WEBPACK_IMPORTED_MODULE_0__[\"userReducer\"]\n});\nconst store = Object(redux__WEBPACK_IMPORTED_MODULE_1__[\"createStore\"])(rootReducer);\n/* harmony default export */ __webpack_exports__[\"default\"] = (store);\n\n//# sourceURL=webpack:///./src/store/store.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _reducer_userReducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./reducer/userReducer */ \"./src/store/reducer/userReducer.ts\");\n/* harmony import */ var _reducer_todoReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reducer/todoReducer */ \"./src/store/reducer/todoReducer.ts\");\n/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ \"./node_modules/redux/es/redux.js\");\n/* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux-thunk */ \"./node_modules/redux-thunk/es/index.js\");\n\n\n\n\nconst rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_2__[\"combineReducers\"])({\n  todos: _reducer_todoReducer__WEBPACK_IMPORTED_MODULE_1__[\"todoReducer\"],\n  users: _reducer_userReducer__WEBPACK_IMPORTED_MODULE_0__[\"userReducer\"]\n});\nconst store = Object(redux__WEBPACK_IMPORTED_MODULE_2__[\"createStore\"])(rootReducer, Object(redux__WEBPACK_IMPORTED_MODULE_2__[\"applyMiddleware\"])(redux_thunk__WEBPACK_IMPORTED_MODULE_3__[\"default\"]));\n/* harmony default export */ __webpack_exports__[\"default\"] = (store);\n\n//# sourceURL=webpack:///./src/store/store.ts?");
 
 /***/ })
 
