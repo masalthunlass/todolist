@@ -41,7 +41,7 @@ const TodoListManagement: React.FC<Props> = (props) => {
 
     React.useEffect(() => {
         props.getTodoList();
-    }, [props]);
+    }, []);
 
     return (<div id="todolist">
         <h3>Je dois faire :</h3>
