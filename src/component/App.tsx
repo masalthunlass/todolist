@@ -1,15 +1,24 @@
 import React from 'react';
 import TodoListManagement from './todolist/TodoListManagement';
-import UserManagement from './user/UserManagement';
+import SignInPage from './authentication/SigninPage';
+import { AuthenticationProvider, TestProvider, useAuth } from './authentication/AuthenticationProvider';
 
-const App : React.FC = () => {
-  
-
-    return (<>
-        <UserManagement></UserManagement>
-        <br /><br />
-        <TodoListManagement></TodoListManagement></>);
+const App: React.FC = () => {
+    
+    return (<div>
+       
+        <AuthenticationProvider>
+        <Main/>
+    </AuthenticationProvider>
+    </div>);
 }
 
+const Main: React.FC = () => {
+    const { status } = useAuth();
+    console.log(status);
+    return (<>{ status === 'UNAUTHENTICATED' ?
+        <SignInPage/> : <TodoListManagement/>
+    }</>)
+}
 
 export default App;
