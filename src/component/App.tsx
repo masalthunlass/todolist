@@ -6,7 +6,6 @@ import { AuthenticationProvider, TestProvider, useAuth } from './authentication/
 const App: React.FC = () => {
     
     return (<div>
-       
         <AuthenticationProvider>
         <Main/>
     </AuthenticationProvider>
@@ -15,7 +14,7 @@ const App: React.FC = () => {
 
 const Main: React.FC = () => {
     const { status } = useAuth();
-    console.log(status);
+
     return (<>{ status === 'UNAUTHENTICATED' ?
         <SignInPage/> : <TodoListManagement/>
     }</>)
